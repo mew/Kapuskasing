@@ -24,4 +24,6 @@ tasks.withType<Jar> {
     manifest {
         attributes["Main-Class"] = "ca.noratastic.kapuskasing.Main"
     }
+    exclude("module-info.class")
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
 }
