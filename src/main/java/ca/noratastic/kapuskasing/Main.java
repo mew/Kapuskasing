@@ -19,14 +19,16 @@ public class Main {
     static final HashMap<String, String> fields = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
-        if (args.length < 3) {
+        if (args.length == 0) {
             System.out.println("Usage: kapuskaming.jar <jar> <methods> <fields>");
             return;
         }
 
         File inputJar = new File(args[0]);
-        File methodsCsv = new File(args[1]);
-        File fieldsCsv = new File(args[2]);
+        String mc = args.length > 1 ? args[1] : "methods.csv";
+        String fc = args.length > 2 ? args[2] : "fields.csv";
+        File methodsCsv = new File(mc);
+        File fieldsCsv = new File(fc);
 
         readMappings(methodsCsv, methods);
         readMappings(fieldsCsv, fields);
